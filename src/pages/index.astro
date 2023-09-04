@@ -1,14 +1,13 @@
 ---
+import background from "../../public/font-principle-pulser.jpg";
 import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
 ---
 
 <Layout title="Freja">
   <main>
     <section class="section-pulser-image">
-      <img
-        src="/public/font-principle-pulser.jpg"
-        alt="Freja joyeria de pulseras hecha a manos"
-      />
+      <Image src={background} alt="Freja joyeria de pulseras hecha a manos" />
     </section>
   </main>
 </Layout>

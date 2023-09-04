@@ -1,5 +1,8 @@
 ---
 import Navbar from "../components/Navbar.jsx";
+import instargram from "../../public/instagram.svg";
+import { Image } from "astro:assets";
+
 interface Props {
   title: string;
 }
@@ -24,6 +27,10 @@ const CLASSNAME_COMPONENT = {
   </head>
   <body>
     <header>
+      <div class="oferta-freja">
+        <h5>Aprovecha las ofertas en descuento <b>¡Compra Ahora!</b></h5>
+        <Image src={instargram} alt="Instagram de freja" width="23" />
+      </div>
       <Navbar
         navbarClassName={CLASSNAME_COMPONENT.navbarClassName}
         navbarClassNameList={CLASSNAME_COMPONENT.navbarClassNameList}
@@ -40,6 +47,7 @@ const CLASSNAME_COMPONENT = {
     --freja-c-zinc: #222222;
     --freja-c-brown: #c7ab62;
     --freja-c-gray: #4f4f4f;
+    --freja-c-gray-ligth: #f7f5f4;
     --freja-c-red: #ff0000;
 
     /** --------------------------------------- Secundary ---------------------------------- */
@@ -53,6 +61,7 @@ const CLASSNAME_COMPONENT = {
   *::before,
   *::after {
     box-sizing: border-box;
+    margin: 0;
   }
   html {
     font-family: system-ui, sans-serif;
@@ -61,13 +70,28 @@ const CLASSNAME_COMPONENT = {
     font-size: 16px;
     margin: 0;
   }
+  .oferta-freja {
+    background-color: var(--freja-c-gray-ligth);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.4rem 1rem;
+  }
+  .oferta-freja h5 {
+    font-weight: lighter;
+  }
+  .oferta-freja b {
+    color: var(--freja-c-brown);
+    text-decoration: underline;
+    cursor: pointer;
+  }
   .navbar-freja {
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     background-color: var(--freja-c-white);
-    padding: 0.2rem 1rem;
+    padding: 1rem;
     box-shadow: 0px 2px 4px -1px var(--freja-c-shadow);
   }
   .navbar-freja .list-navbar {
