@@ -1,39 +1,89 @@
---- 
+---
+import Navbar from "../components/Navbar.jsx";
 interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
+
+const CLASSNAME_COMPONENT = {
+  navbarClassName: "navbar-freja",
+  navbarClassNameList: "list-navbar",
+};
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description">
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header>
+      <Navbar
+        navbarClassName={CLASSNAME_COMPONENT.navbarClassName}
+        navbarClassNameList={CLASSNAME_COMPONENT.navbarClassNameList}
+      />
+    </header>
+    <slot />
+  </body>
 </html>
 <style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60%);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151A;
-		background-size: 224px;
-	}
-	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
-	}
+  :root {
+    /** ----------------------------------- Primary ----------------------------------------- */
+    --freja-c-white: #fff;
+    --freja-c-black: #000;
+    --freja-c-zinc: #222222;
+    --freja-c-brown: #c7ab62;
+    --freja-c-gray: #4f4f4f;
+    --freja-c-red: #ff0000;
+
+    /** --------------------------------------- Secundary ---------------------------------- */
+    --freja-c-pushy-pending: #ae7c72;
+    --freja-c-green-ligth: #b7e66c;
+    --freja-c-green-dark: #3aa560;
+    --freja-c-green-gradient: linear-gradient(115deg, #3aa560, #b7e66c);
+    --freja-c-shadow: #00000033;
+  }
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  html {
+    font-family: system-ui, sans-serif;
+  }
+  body {
+    font-size: 16px;
+    margin: 0;
+  }
+  .navbar-freja {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: var(--freja-c-white);
+    padding: 0.2rem 1rem;
+    box-shadow: 0px 2px 4px -1px var(--freja-c-shadow);
+  }
+  .navbar-freja .list-navbar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    list-style: none;
+  }
+  .navbar-freja .list-navbar li a {
+    color: var(--freja-c-black);
+  }
+  .navbar-freja .list-navbar li a:hover {
+    color: var(--freja-c-brown);
+    transition: color 0.3s;
+  }
+  a {
+    text-decoration: none;
+  }
 </style>
