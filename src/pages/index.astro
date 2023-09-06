@@ -1,24 +1,21 @@
 ---
-import background from "../../public/font-principle-pulser.jpg";
 import Layout from "../layouts/Layout.astro";
-import { Image } from "astro:assets";
+import Carrusel from "../components/islands/Carrusel";
 ---
 
 <Layout title="Freja">
   <main>
     <section class="section-pulser-image">
-      <Image src={background} alt="Freja joyeria de pulseras hecha a manos" />
+      <Carrusel client:load />
     </section>
   </main>
+  <section>
+    <h1>Hola Astro</h1>
+  </section>
 </Layout>
 
 <style>
   .section-pulser-image {
-    min-height: 100vh;
-  }
-  .section-pulser-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: max-content;
   }
 </style>
