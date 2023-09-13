@@ -5,11 +5,11 @@ export default function Navbar({ navbarClassName, navbarClassNameList }) {
     { name: "Para regalar", href: "/#regalos" },
   ];
   return (
-    <nav class={navbarClassName}>
+    <nav className={navbarClassName}>
       <h1>Logo</h1>
-      <ul class={navbarClassNameList}>
-        {listOptionsNavbar.map((option) => (
-          <li>
+      <ul className={navbarClassNameList}>
+        {listOptionsNavbar.map((option, index) => (
+          <li key={index}>
             <a href={option.href}>{option.name}</a>
           </li>
         ))}
