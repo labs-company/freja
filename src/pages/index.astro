@@ -1,13 +1,14 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import PageTitle from "../components/PageTitle";
-import Carrusel from "../components/islands/Carrusel";
-import SliderCarrusel from "../components/islands/SliderCarrusel";
-
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+
+import Layout from "../layouts/Layout.astro";
+import PageTitle from "../components/PageTitle";
+import PageForFree from "./PageForFree.astro";
 import PageUltimate from "./PageUltimate.astro";
+import SliderCarrusel from "../components/islands/SliderCarrusel";
+import Carrusel from "../components/islands/Carrusel";
 ---
 
 <Layout title="Freja">
@@ -17,12 +18,27 @@ import PageUltimate from "./PageUltimate.astro";
     </section>
     <section>
       <PageTitle title="¡Lo ultimo!" client:visible />
-      <PageUltimate />
+      <article>
+        <PageUltimate />
+      </article>
     </section>
-    <section class="lg:mt-10 bg-[--freja-c-gray-ligth]" id="for-man">
+    <section id="for-woman">
+      <PageTitle title="Para mujeres" client:visible />
+      <article class="px-4 py-6">
+        <SliderCarrusel client:visible />
+      </article>
+    </section>
+    <section class="lg:mt-10" id="for-man">
       <PageTitle title="Para hombres" client:visible />
       <article class="px-4 py-6">
         <SliderCarrusel client:visible />
+      </article>
+    </section>
+    <section id="regalos">
+      <PageTitle title="¡Gratis!" client:visible />
+
+      <article>
+        <PageForFree />
       </article>
     </section>
   </main>

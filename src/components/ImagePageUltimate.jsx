@@ -34,7 +34,7 @@ export default function ImagePageUltimate({ photo }) {
       animate={{ opacity: isVisibility ? 1 : 0, scale: isVisibility ? 1 : 0.5 }}
       transition={{ ease: "easeInOut" }}
       exit={{ opacity: 0, scale: 0.5 }}
-      className="h-full w-full object-cover object-center cursor-pointer scale-100 hover:scale-105 transition-transform"
+      className="h-full w-full object-cover object-center cursor-pointer scale-100 hover:scale-105 transition-transform px-8 lg:p-0"
     />
   );
 }

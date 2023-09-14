@@ -1,6 +1,6 @@
 export default function Navbar({ navbarClassName, navbarClassNameList }) {
   const listOptionsNavbar = [
-    { name: "Para mujer", href: "/#for-women" },
+    { name: "Para mujer", href: "/#for-woman" },
     { name: "Para hombre", href: "/#for-man" },
     { name: "Para regalar", href: "/#regalos" },
   ];
