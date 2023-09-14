@@ -1,21 +1,29 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import PageTitle from "../components/PageTitle";
 import Carrusel from "../components/islands/Carrusel";
+import SliderCarrusel from "../components/islands/SliderCarrusel";
+
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import PageUltimate from "./PageUltimate.astro";
 ---
 
 <Layout title="Freja">
   <main>
-    <section class="section-pulser-image">
+    <section class="h-[90vh]">
       <Carrusel client:visible />
     </section>
+    <section>
+      <PageTitle title="¡Lo ultimo!" client:visible />
+      <PageUltimate />
+    </section>
+    <section class="lg:mt-10 bg-[--freja-c-gray-ligth]" id="for-man">
+      <PageTitle title="Para hombres" client:visible />
+      <article class="px-4 py-6">
+        <SliderCarrusel client:visible />
+      </article>
+    </section>
   </main>
-  <section>
-    <h1>Hola Astro</h1>
-  </section>
 </Layout>
-
-<style>
-  .section-pulser-image {
-    height: 100vh;
-  }
-</style>

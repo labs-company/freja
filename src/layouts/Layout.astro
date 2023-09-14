@@ -1,7 +1,9 @@
 ---
-import Navbar from "../components/Navbar.jsx";
+import Navbar from "../components/islands/Navbar.jsx";
 import instargram from "../../public/instagram.svg";
 import { Image } from "astro:assets";
+import ButtonWhatsApp from "../components/ButtonWhastapp.astro";
+import { ViewTransitions } from "astro:transitions";
 
 interface Props {
   title: string;
@@ -22,103 +24,140 @@ const CLASSNAME_COMPONENT = {
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mooli&display=swap"
+      rel="stylesheet"
+    />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <ViewTransitions />
   </head>
   <body>
-    <header>
-      <div class="oferta-freja">
-        <h5>Aprovecha las ofertas en descuento <b>¡Compra Ahora!</b></h5>
-        <Image src={instargram} alt="Instagram de freja" width="23" />
+    <header class="shadow sticky top-0 left-0 right-0 z-10">
+      <div
+        class="relative isolate flex items-center gap-x-6 overflow-hidden bg-gray-50 px-6 py-2.5 sm:px-3.5 sm:before:flex-1"
+      >
+        <div
+          class="absolute left-[max(-7rem,calc(50%-52rem))] top-1/2 -z-10 -translate-y-1/2 transform-gpu blur-2xl"
+          aria-hidden="true"
+        >
+          <div
+            class="aspect-[577/310] w-[36.0625rem] bg-gradient-to-r from-[--freja-c-gray-ligth] to-[--freja-c-brown] opacity-30"
+            style="clip-path: polygon(74.8% 41.9%, 97.2% 73.2%, 100% 34.9%, 92.5% 0.4%, 87.5% 0%, 75% 28.6%, 58.5% 54.6%, 50.1% 56.8%, 46.9% 44%, 48.3% 17.4%, 24.7% 53.9%, 0% 27.9%, 11.9% 74.2%, 24.9% 54.1%, 68.6% 100%, 74.8% 41.9%)"
+          >
+          </div>
+        </div>
+        <div
+          class="absolute left-[max(45rem,calc(50%+8rem))] top-1/2 -z-10 -translate-y-1/2 transform-gpu blur-2xl"
+          aria-hidden="true"
+        >
+          <div
+            class="aspect-[577/310] w-[36.0625rem] bg-gradient-to-r from-[--freja-c-gray-ligth] to-[--freja-c-brown] opacity-30"
+            style="clip-path: polygon(74.8% 41.9%, 97.2% 73.2%, 100% 34.9%, 92.5% 0.4%, 87.5% 0%, 75% 28.6%, 58.5% 54.6%, 50.1% 56.8%, 46.9% 44%, 48.3% 17.4%, 24.7% 53.9%, 0% 27.9%, 11.9% 74.2%, 24.9% 54.1%, 68.6% 100%, 74.8% 41.9%)"
+          >
+          </div>
+        </div>
+        <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+          <p class="text-sm leading-6 text-gray-900">
+            <strong class="font-semibold">Freja 2023</strong><svg
+              viewBox="0 0 2 2"
+              class="mx-2 inline h-0.5 w-0.5 fill-current"
+              aria-hidden="true"><circle cx="1" cy="1" r="1"></circle></svg
+            >Compra las utlimas oferta de freja
+          </p>
+          <a
+            href="#"
+            class="flex-none rounded-full bg-gray-900 px-3.5 py-1 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900 font-mooli"
+            >Compra Ya <span aria-hidden="true">&rarr;</span></a
+          >
+        </div>
+        <a href="https://instagram.com">
+          <Image src={instargram} alt="Instagram Freja" class="w-auto h-8" />
+        </a>
       </div>
       <Navbar
         navbarClassName={CLASSNAME_COMPONENT.navbarClassName}
         navbarClassNameList={CLASSNAME_COMPONENT.navbarClassNameList}
       />
     </header>
+    <ButtonWhatsApp />
     <slot />
+    <style is:global>
+      :root {
+        /** ----------------------------------- Primary ----------------------------------------- */
+        --freja-c-white: #fff;
+        --freja-c-black: #000;
+        --freja-c-zinc: #222222;
+        --freja-c-brown: #c7ab62;
+        --freja-c-gray: #4f4f4f;
+        --freja-c-gray-ligth: #f7f5f4;
+        --freja-c-red: #ff0000;
+
+        /** --------------------------------------- Secundary ---------------------------------- */
+        --freja-c-pushy-pending: #ae7c72;
+        --freja-c-green-ligth: #b7e66c;
+        --freja-c-green-dark: #3aa560;
+        --freja-c-green-gradient: linear-gradient(115deg, #3aa560, #b7e66c);
+        --freja-c-shadow: #00000033;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      html,
+      body {
+        font-family: system-ui, sans-serif;
+        position: relative;
+        height: 100%;
+      }
+
+      .oferta-freja {
+        background-color: var(--freja-c-gray-ligth);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.4rem 1rem;
+      }
+      .oferta-freja h5 {
+        font-weight: lighter;
+      }
+      .oferta-freja b {
+        color: var(--freja-c-brown);
+        text-decoration: underline;
+        cursor: pointer;
+      }
+      .navbar-freja {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        background-color: var(--freja-c-white);
+        padding: 1rem;
+        box-shadow: 0px 2px 4px -1px var(--freja-c-shadow);
+      }
+      .navbar-freja .list-navbar {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        list-style: none;
+      }
+      .navbar-freja .list-navbar li a {
+        color: var(--freja-c-black);
+      }
+      .navbar-freja .list-navbar li a:hover {
+        color: var(--freja-c-brown);
+        transition: color 0.3s;
+      }
+      a {
+        text-decoration: none;
+      }
+    </style>
   </body>
 </html>
-<style is:global>
-  :root {
-    /** ----------------------------------- Primary ----------------------------------------- */
-    --freja-c-white: #fff;
-    --freja-c-black: #000;
-    --freja-c-zinc: #222222;
-    --freja-c-brown: #c7ab62;
-    --freja-c-gray: #4f4f4f;
-    --freja-c-gray-ligth: #f7f5f4;
-    --freja-c-red: #ff0000;
-
-    /** --------------------------------------- Secundary ---------------------------------- */
-    --freja-c-pushy-pending: #ae7c72;
-    --freja-c-green-ligth: #b7e66c;
-    --freja-c-green-dark: #3aa560;
-    --freja-c-green-gradient: linear-gradient(115deg, #3aa560, #b7e66c);
-    --freja-c-shadow: #00000033;
-  }
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-    margin: 0;
-  }
-  html,
-  body {
-    font-family: system-ui, sans-serif;
-    position: relative;
-    height: 100%;
-  }
-  body {
-    font-size: 16px;
-    background: #eee;
-    font-family:
-      Helvetica Neue,
-      Helvetica,
-      Arial,
-      sans-serif;
-    color: #000;
-    margin: 0;
-    padding: 0;
-  }
-  .oferta-freja {
-    background-color: var(--freja-c-gray-ligth);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.4rem 1rem;
-  }
-  .oferta-freja h5 {
-    font-weight: lighter;
-  }
-  .oferta-freja b {
-    color: var(--freja-c-brown);
-    text-decoration: underline;
-    cursor: pointer;
-  }
-  .navbar-freja {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    background-color: var(--freja-c-white);
-    padding: 1rem;
-    box-shadow: 0px 2px 4px -1px var(--freja-c-shadow);
-  }
-  .navbar-freja .list-navbar {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    list-style: none;
-  }
-  .navbar-freja .list-navbar li a {
-    color: var(--freja-c-black);
-  }
-  .navbar-freja .list-navbar li a:hover {
-    color: var(--freja-c-brown);
-    transition: color 0.3s;
-  }
-  a {
-    text-decoration: none;
-  }
-</style>

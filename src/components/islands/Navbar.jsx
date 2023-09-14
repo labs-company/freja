@@ -10,7 +10,9 @@ export default function Navbar({ navbarClassName, navbarClassNameList }) {
       <ul className={navbarClassNameList}>
         {listOptionsNavbar.map((option, index) => (
           <li key={index}>
-            <a href={option.href}>{option.name}</a>
+            <a href={option.href} className="font-mooli">
+              {option.name}
+            </a>
           </li>
         ))}
       </ul>
