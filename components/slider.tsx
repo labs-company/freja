@@ -1,19 +1,13 @@
+"use client";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Pagination, Autoplay } from "swiper/modules";
-import ImageSlider from "../ImageSlider";
-import images from "../../docs/images";
-
-/**
- * @typedef {Object} Photo
- * @property {string} url - La URL de la imagen.
- */
-
-/*** @type {Array<Photo>}*/
-const sliderImages = images.photos;
+import Image from "next/image";
+import images from "@/public/slider-photos";
 
 export default function SliderCarrusel() {
   return (
-    <>
+    <article className="px-4 py-6">
       <Swiper
         slidesPerView={"auto"}
         spaceBetween={30}
@@ -32,12 +26,18 @@ export default function SliderCarrusel() {
         modules={[EffectCoverflow, Pagination, Autoplay]}
         className="h-full flex justify-start"
       >
-        {sliderImages.map((photo, index) => (
-          <SwiperSlide key={index} className="w-max">
-            <ImageSlider photo={photo.url} />
+        {images.photos.map((photo, index) => (
+          <SwiperSlide key={index} className="!w-max">
+            <figure className="h-full">
+              <Image
+                src={photo.url}
+                alt="url"
+                className="w-96 h-full shadow rounded-xl scale-90 hover:scale-100 transition-transform"
+              />
+            </figure>
           </SwiperSlide>
         ))}
       </Swiper>
-    </>
+    </article>
   );
 }
