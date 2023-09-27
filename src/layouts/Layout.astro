@@ -2,7 +2,7 @@
 import Navbar from "../components/islands/Navbar.jsx";
 import instargram from "../../public/instagram.svg";
 import { Image } from "astro:assets";
-import ButtonWhatsApp from "../components/ButtonWhastapp.astro";
+import ButtonWhatsApp from "../components/ButtonWhastapp.jsx";
 import { ViewTransitions } from "astro:transitions";
 
 interface Props {
@@ -82,7 +82,7 @@ const CLASSNAME_COMPONENT = {
         navbarClassNameList={CLASSNAME_COMPONENT.navbarClassNameList}
       />
     </header>
-    <ButtonWhatsApp />
+    <ButtonWhatsApp client:load />
     <slot />
     <footer class="bg-neutral-200 text-center lg:text-left">
       <div class="p-4 text-center">
@@ -168,4 +168,5 @@ const CLASSNAME_COMPONENT = {
       }
     </style>
   </body>
+   ../components/ButtonWhastapp.jsx/index.js
 </html>
