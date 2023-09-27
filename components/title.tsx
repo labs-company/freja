@@ -1,8 +1,12 @@
+"use client";
+
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function PageTitle({ title }) {
-  const titleRef = useRef(null);
+type TyTitle = { title: string };
+
+export default function PageTitle({ title }: TyTitle) {
+  const titleRef = useRef<null | HTMLHeadingElement>(null);
 
   const [isVisible, setIsVisible] = useState(false);
 
@@ -16,6 +20,7 @@ export default function PageTitle({ title }) {
     window.addEventListener("scroll", checkVisibility);
     checkVisibility();
   }, []);
+
   return (
     <AnimatePresence>
       <motion.h2

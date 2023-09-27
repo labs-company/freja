@@ -1,8 +1,13 @@
+"use client";
+
 import { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { StaticImageData } from "next/image";
 
-export default function ImagePageUltimate({ photo }) {
-  const imageRef = useRef(null);
+type TyPhoto = { photo:  string | undefined };
+
+export default function ImagePageUltimate({ photo }: TyPhoto) {
+  const imageRef = useRef<null | HTMLImageElement>(null);
   const [isVisibility, setIsVisible] = useState(false);
 
   const checkVisibility = () => {
@@ -28,7 +33,7 @@ export default function ImagePageUltimate({ photo }) {
   return (
     <motion.img
       ref={imageRef}
-      src={photo.src}
+      src={photo}
       alt="Imagen"
       initial={{ opacity: 0, scale: 0.5 }}
       animate={{ opacity: isVisibility ? 1 : 0, scale: isVisibility ? 1 : 0.5 }}
